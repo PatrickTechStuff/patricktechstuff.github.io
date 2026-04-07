@@ -12,7 +12,7 @@
   "deploy": "gh-pages -d dist"
   },
  
-  "homepage": "https://PatrickTechStuff.github.io/patrick-portfolio",
+  "homepage": "https://patricktechstuff.github.io",
   "dependencies": {
     "@tailwindcss/postcss": "^4.2.2",
     "framer-motion": "^12.38.0",
