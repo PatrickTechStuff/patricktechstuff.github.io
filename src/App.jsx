@@ -352,25 +352,30 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
   return (
     <div className="relative py-12">
       {/* Carousel Container */}
-      <div className="relative h-[550px] flex items-center justify-center overflow-visible">
+      <div className="relative h-auto md:h-[550px] flex items-center justify-center overflow-visible">
         {projects.map((project, idx) => {
           const position = getProjectPosition(idx);
           
           let transformClass = '';
           let opacityClass = '';
+          let mobileClass = '';
           
           if (position === 'center') {
             transformClass = 'scale-100 translate-x-0 z-30';
             opacityClass = 'opacity-100';
+            mobileClass = 'md:absolute static';
           } else if (position === 'right') {
             transformClass = 'scale-75 translate-x-80 z-10';
             opacityClass = 'opacity-70';
+            mobileClass = 'md:absolute hidden md:block';
           } else if (position === 'left') {
             transformClass = 'scale-75 -translate-x-80 z-10';
             opacityClass = 'opacity-70';
+            mobileClass = 'md:absolute hidden md:block';
           } else {
             transformClass = 'scale-50 z-0';
             opacityClass = 'opacity-0 pointer-events-none';
+            mobileClass = 'md:absolute hidden';
           }
 
           return (
@@ -379,7 +384,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
                 key={idx}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`absolute w-full max-w-md transition-all duration-500 ${transformClass} ${opacityClass}`}
+                className={`${mobileClass} w-full max-w-md transition-all duration-500 mx-auto ${transformClass} ${opacityClass}`}
               >
                 <ProjectCard {...project} onClick={() => onProjectClick(project)} />
               </motion.div>
@@ -388,7 +393,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
                 key={idx}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`absolute w-full max-w-md transition-all duration-500 ${transformClass} ${opacityClass}`}
+                className={`${mobileClass} w-full max-w-md transition-all duration-500 mx-auto ${transformClass} ${opacityClass}`}
               >
                 <ProjectCard {...project} onClick={() => onProjectClick(project)} />
               </motion.div>
@@ -491,18 +496,18 @@ const App = () => {
 
       <main className="ml-0 md:ml-56 min-h-screen pt-16 md:pt-0">
         {/* HERO/DASHBOARD */}
-        <section id="dashboard" className="px-12 py-24 border-b border-white/5">
+        <section id="dashboard" className="px-4 md:px-12 py-16 md:py-24 border-b border-white/5">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <p className="text-sm text-gray-500 mb-4 font-semibold tracking-wide">WELCOME</p>
-            <h1 className="text-7xl font-bold text-white mb-4 leading-tight">
+            <h1 className="text-4xl md:text-7xl font-bold text-white mb-4 leading-tight">
               Patrick <span className="text-[#22ff00]">Bugacia</span>
             </h1>
-            <p className="text-2xl text-gray-300 max-w-3xl mb-8 leading-relaxed font-light">
+            <p className="text-lg md:text-2xl text-gray-300 max-w-3xl mb-8 leading-relaxed font-light">
               <span className="text-[#22ff00] font-semibold">Full Stack Web Developer</span> with expertise in Laravel, MS SQL Server, and modern web technologies. Building scalable applications that solve real-world problems.
             </p>
 
-            <div className="flex gap-4">
-              <a href="/cv.pdf" download="Patrick_Bugacia_CV.pdf" className="px-6 py-3 bg-[#22ff00] hover:bg-[#00dd00] text-black rounded-lg font-semibold transition-all flex items-center gap-2 cursor-pointer">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <a href="/cv.pdf" download="Patrick_Bugacia_CV.pdf" className="px-6 py-3 bg-[#22ff00] hover:bg-[#00dd00] text-black rounded-lg font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <Download size={18} />
                 Download CV
               </a>
@@ -522,8 +527,8 @@ const App = () => {
         </section>
 
         {/* ABOUT/PROFESSIONAL SUMMARY */}
-        <section id="about" className="px-12 py-24 border-b border-white/5">
-          <h2 className="text-4xl font-bold text-white mb-8">About</h2>
+        <section id="about" className="px-4 md:px-12 py-16 md:py-24 border-b border-white/5">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">About</h2>
           
           <div className="mb-12">
             <h3 className="text-xl text-[#22ff00] font-semibold mb-4">Professional Summary</h3>
@@ -537,8 +542,8 @@ const App = () => {
         </section>
 
         {/* WORK EXPERIENCE */}
-        <section id="experience" className="px-12 py-24 border-b border-white/5">
-          <h2 className="text-4xl font-bold text-white mb-16">Experience</h2>
+        <section id="experience" className="px-4 md:px-12 py-16 md:py-24 border-b border-white/5">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-16">Experience</h2>
           <div className="space-y-8">
             <div className="border-l-2 border-[#22ff00]/30 pl-8 py-4 hover:border-[#22ff00] transition-all">
               <h3 className="text-2xl font-bold text-white mb-1">Freelance Web Developer</h3>
@@ -572,8 +577,8 @@ const App = () => {
         </section>
 
         {/* TECHNICAL SKILLS */}
-        <section id="skills" className="px-12 py-24 border-b border-white/5">
-          <h2 className="text-4xl font-bold text-white mb-16">Skills</h2>
+        <section id="skills" className="px-4 md:px-12 py-16 md:py-24 border-b border-white/5">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-16">Skills</h2>
           <p className="text-gray-400 mb-12">Technologies I work with</p>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
@@ -584,8 +589,8 @@ const App = () => {
         </section>
 
         {/* EDUCATION */}
-        <section id="education" className="px-12 py-24 border-b border-white/5">
-          <h2 className="text-4xl font-bold text-white mb-16">Education</h2>
+        <section id="education" className="px-4 md:px-12 py-16 md:py-24 border-b border-white/5">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-16">Education</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 hover:border-[#22ff00]/50 transition-all">
@@ -625,14 +630,14 @@ const App = () => {
         </section>
 
         {/* PROJECTS */}
-        <section id="projects" className="px-12 py-24 border-b border-white/5">
-          <h2 className="text-4xl font-bold text-white mb-16">Projects</h2>
+        <section id="projects" className="px-4 md:px-12 py-16 md:py-24 border-b border-white/5">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-16">Projects</h2>
           <ProjectCarousel projects={projects} onProjectClick={setSelectedProject} />
         </section>
 
         {/* CONTACT */}
-        <section id="contact" className="px-12 py-24">
-          <h2 className="text-4xl font-bold text-white mb-8">Contact</h2>
+        <section id="contact" className="px-4 md:px-12 py-16 md:py-24">
+          <h2 className="text-2xl md:text-4xl font-bold text-white mb-8">Contact</h2>
           <p className="text-gray-400 mb-16">Open to discussing new projects and opportunities.</p>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
