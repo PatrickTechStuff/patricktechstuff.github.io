@@ -46,31 +46,31 @@ const ProjectCard = ({ title, description, tags, onClick }) => (
   <motion.div 
     initial={{ opacity: 0, scale: 0.95 }}
     animate={{ opacity: 1, scale: 1 }}
-    className="bg-[#0f0f0f] border border-white/5 rounded-lg overflow-hidden hover:border-[#22ff00]/30 transition-all cursor-pointer p-4"
+    className="bg-[#0f0f0f] border border-white/5 rounded-lg overflow-hidden hover:border-[#22ff00]/30 transition-all cursor-pointer p-3 md:p-4"
   >
     {/* Frame Effect - Inner Container */}
-    <div className="bg-[#1a1a1a] rounded-lg overflow-hidden border border-white/10 p-4">
+    <div className="bg-[#1a1a1a] rounded-lg overflow-hidden border border-white/10 p-3 md:p-4">
       {/* Thumbnail - Vertical Orientation */}
-      <div className="bg-linear-to-br from-[#1a4d1a] to-[#0d2d0d] h-96 flex items-center justify-center text-center p-6 rounded-lg">
+      <div className="bg-linear-to-br from-[#1a4d1a] to-[#0d2d0d] h-48 md:h-96 flex items-center justify-center text-center p-4 md:p-6 rounded-lg">
         <div>
-          <h3 className="text-white text-2xl font-bold">{title}</h3>
+          <h3 className="text-white text-lg md:text-2xl font-bold">{title}</h3>
         </div>
       </div>
     </div>
     
     {/* Content */}
-    <div className="p-6">
-      <p className="text-gray-400 mb-4 text-sm leading-relaxed">{description}</p>
+    <div className="p-3 md:p-6">
+      <p className="text-gray-400 mb-3 md:mb-4 text-xs md:text-sm leading-relaxed">{description}</p>
       <div className="flex flex-wrap gap-2">
         {tags.map(tag => (
-          <span key={tag} className="text-xs px-3 py-1 bg-[#22ff00]/20 text-[#22ff00] rounded-full">
+          <span key={tag} className="text-xs px-2 md:px-3 py-1 bg-[#22ff00]/20 text-[#22ff00] rounded-full">
             {tag}
           </span>
         ))}
       </div>
       <button 
         onClick={onClick}
-        className="w-full mt-4 px-4 py-2 border border-[#22ff00] text-[#22ff00] rounded-lg hover:bg-[#22ff00]/10 transition-all text-sm font-semibold"
+        className="w-full mt-3 md:mt-4 px-4 py-2 border border-[#22ff00] text-[#22ff00] rounded-lg hover:bg-[#22ff00]/10 transition-all text-xs md:text-sm font-semibold"
       >
         View Details
       </button>
@@ -350,7 +350,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
   };
 
   return (
-    <div className="relative py-12">
+    <div className="relative py-6 md:py-12">
       {/* Carousel Container */}
       <div className="relative h-auto md:h-[550px] flex items-center justify-center overflow-visible">
         {projects.map((project, idx) => {
@@ -384,7 +384,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
                 key={idx}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`${mobileClass} w-full max-w-md transition-all duration-500 mx-auto ${transformClass} ${opacityClass}`}
+                className={`${mobileClass} w-full max-w-sm md:max-w-md transition-all duration-500 mx-auto ${transformClass} ${opacityClass}`}
               >
                 <ProjectCard {...project} onClick={() => onProjectClick(project)} />
               </motion.div>
@@ -393,7 +393,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
                 key={idx}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className={`${mobileClass} w-full max-w-md transition-all duration-500 mx-auto ${transformClass} ${opacityClass}`}
+                className={`${mobileClass} w-full max-w-sm md:max-w-md transition-all duration-500 mx-auto ${transformClass} ${opacityClass}`}
               >
                 <ProjectCard {...project} onClick={() => onProjectClick(project)} />
               </motion.div>
@@ -403,12 +403,12 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
       </div>
       
       {/* Navigation Controls */}
-      <div className="flex justify-center items-center gap-8 mt-12">
+      <div className="flex justify-center items-center gap-4 md:gap-8 mt-6 md:mt-12">
         <button 
           onClick={prev}
-          className="p-3 hover:bg-[#22ff00]/20 rounded-lg transition-all text-gray-400 hover:text-[#22ff00] hover:border hover:border-[#22ff00]/50"
+          className="p-2 md:p-3 hover:bg-[#22ff00]/20 rounded-lg transition-all text-gray-400 hover:text-[#22ff00] hover:border hover:border-[#22ff00]/50"
         >
-          <ChevronLeft size={28} />
+          <ChevronLeft size={20} className="md:w-7 md:h-7" />
         </button>
 
         <div className="flex gap-2">
@@ -416,10 +416,10 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`h-3 rounded-full transition-all ${
+              className={`h-2 md:h-3 rounded-full transition-all ${
                 idx === currentIndex 
-                  ? 'bg-[#22ff00] w-12' 
-                  : 'bg-gray-700 w-3 hover:bg-gray-600'
+                  ? 'bg-[#22ff00] w-8 md:w-12' 
+                  : 'bg-gray-700 w-2 md:w-3 hover:bg-gray-600'
               }`}
             />
           ))}
@@ -427,9 +427,9 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
 
         <button 
           onClick={next}
-          className="p-3 hover:bg-[#22ff00]/20 rounded-lg transition-all text-gray-400 hover:text-[#22ff00] hover:border hover:border-[#22ff00]/50"
+          className="p-2 md:p-3 hover:bg-[#22ff00]/20 rounded-lg transition-all text-gray-400 hover:text-[#22ff00] hover:border hover:border-[#22ff00]/50"
         >
-          <ChevronRight size={28} />
+          <ChevronRight size={20} className="md:w-7 md:h-7" />
         </button>
       </div>
     </div>
