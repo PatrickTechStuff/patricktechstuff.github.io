@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Download, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import CMS from './assets/CMS.png';
+import CTH from './assets/CTH.png';
+import FTS from './assets/FTS.png';
 
 /* --- CUSTOM SVG ICONS --- */
 const GithubIcon = ({ size = 20 }) => (
@@ -42,7 +45,7 @@ const SkillCard = ({ name, level }) => (
   </div>
 );
 
-const ProjectCard = ({ title, description, tags, onClick }) => (
+const ProjectCard = ({ title, description, tags, image, onClick }) => (
   <motion.div 
     initial={{ opacity: 0, scale: 0.95 }}
     animate={{ opacity: 1, scale: 1 }}
@@ -51,10 +54,14 @@ const ProjectCard = ({ title, description, tags, onClick }) => (
     {/* Frame Effect - Inner Container */}
     <div className="bg-[#1a1a1a] rounded-lg overflow-hidden border border-white/10 p-3 md:p-4">
       {/* Thumbnail - Vertical Orientation */}
-      <div className="bg-linear-to-br from-[#1a4d1a] to-[#0d2d0d] h-48 md:h-96 flex items-center justify-center text-center p-4 md:p-6 rounded-lg">
-        <div>
-          <h3 className="text-white text-lg md:text-2xl font-bold">{title}</h3>
-        </div>
+      <div className="bg-linear-to-br from-[#1a4d1a] to-[#0d2d0d] h-48 md:h-96 flex items-center justify-center text-center p-4 md:p-6 rounded-lg overflow-hidden">
+        {image ? (
+          <img src={image} alt={title} className="w-full h-full object-cover" />
+        ) : (
+          <div>
+            <h3 className="text-white text-lg md:text-2xl font-bold">{title}</h3>
+          </div>
+        )}
       </div>
     </div>
     
@@ -104,7 +111,11 @@ const ProjectModal = ({ project, onClose }) => {
         {/* Image Gallery */}
         <div className="bg-linear-to-br from-[#1a4d1a] to-[#0d2d0d] p-6 md:p-8 min-h-fit m-6 rounded-lg border border-white/10">
           <div className="flex items-center justify-center rounded-lg overflow-hidden bg-black/20 aspect-video md:aspect-auto md:h-96">
-            <span className="text-white text-center">{project.galleryText || 'Project Gallery'}</span>
+            {project.image ? (
+              <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
+            ) : (
+              <span className="text-white text-center">{project.galleryText || 'Project Gallery'}</span>
+            )}
           </div>
         </div>
 
@@ -498,13 +509,14 @@ const App = () => {
 
   const projects = [
     {
-      title: 'Enterprise Accounting',
+      title: 'Financial Tech System',
       description: 'Full-stack accounting software with automated financial reporting capabilities.',
       fullDescription: 'Enterprise-grade accounting software with comprehensive financial reporting, automated P&L statements, balance sheets, and multi-branch operations support. Features real-time data synchronization, role-based access control, and customizable report generation.',
       role: 'Full Stack Developer',
       duration: 'November 2023 - Present',
       tags: ['Laravel', 'T-SQL', 'React', 'Tailwind'],
       galleryText: 'Accounting Dashboard & Financial Reports',
+      image: FTS,
       technologies: ['Laravel', 'PHP', 'T-SQL', 'React', 'Tailwind CSS', 'REST APIs', 'MySQL']
     },
     {
@@ -515,7 +527,8 @@ const App = () => {
       duration: 'July 2015 - April 2022',
       tags: ['C#', '.NET', 'MS SQL', 'WinForms'],
       galleryText: 'Cash Management & Inventory Dashboard',
-      technologies: ['C#', '.NET Framework', 'MS SQL Server', 'WinForms', 'T-SQL', 'Stored Procedures', 'ADO.NET']
+      image: CMS,
+      technologies: ['C#', '.NET Framework', 'MS SQL Server', 'WinForms', 'T-SQL', 'Stored Procedures', 'DevExpress']
     },
     {
       title: 'HR Management System',
@@ -525,6 +538,7 @@ const App = () => {
       duration: 'April 2023 - November 2023',
       tags: ['Laravel', 'PHP', 'MySQL'],
       galleryText: 'HR Dashboard & Employee Management',
+      image: CTH,
       technologies: ['Laravel', 'PHP', 'MySQL', 'React', 'Bootstrap', 'JavaScript', 'REST APIs']
     }
   ];
@@ -547,7 +561,7 @@ const App = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="/cv.pdf" download="Patrick_Bugacia_CV.pdf" className="px-6 py-3 bg-[#22ff00] hover:bg-[#00dd00] text-black rounded-lg font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer">
+              <a href="/cvme.pdf" download="Patrick_Bugacia_CV.pdf" className="px-6 py-3 bg-[#22ff00] hover:bg-[#00dd00] text-black rounded-lg font-semibold transition-all flex items-center justify-center gap-2 cursor-pointer">
                 <Download size={18} />
                 Download CV
               </a>
