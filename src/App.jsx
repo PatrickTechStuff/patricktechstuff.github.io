@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, Download, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -163,12 +163,12 @@ const ContactCard = ({ icon: Icon, label, value, href }) => (
     className="bg-[#1a1a1a] border border-white/10 rounded-lg p-8 hover:border-[#22ff00]/50 transition-all hover:bg-[#222] cursor-pointer group"
   >
     <div className="flex items-start gap-4">
-      <div className="text-[#22ff00] group-hover:text-[#00ff66] transition-colors flex-shrink-0">
+      <div className="text-[#22ff00] group-hover:text-[#00ff66] transition-colors shrink-0">
         <Icon size={24} />
       </div>
       <div className="min-w-0 flex-1">
         <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">{label}</p>
-        <p className="text-white text-lg font-semibold mt-2 group-hover:text-[#22ff00] transition-colors break-words">{value}</p>
+        <p className="text-white text-lg font-semibold mt-2 group-hover:text-[#22ff00] transition-colors wrap-break-word">{value}</p>
       </div>
     </div>
   </a>
@@ -196,7 +196,8 @@ const Sidebar = ({ activeSection, setActiveSection }) => {
   return (
     <div className="hidden md:flex fixed left-0 top-0 w-56 h-screen bg-linear-to-b from-[#0f0f0f] to-[#0a0a0a] border-r border-white/10 p-8 flex-col z-50">
       <div className="mb-12">
-        <h1 className="text-3xl font-bold text-white tracking-tight">PB.</h1>
+        {/* <h1 className="text-3xl font-bold text-white tracking-tight">PB.2</h1> */}
+        <img src="/faviconbt.png" alt="Logo" style={{ width: '100px', height: 'auto' }} />
         <p className="text-xs text-gray-500 mt-2 font-medium">FULL STACK DEVELOPER</p>
         <p className="text-xs text-gray-600 mt-1">Manila, Philippines</p>
       </div>
@@ -222,11 +223,11 @@ const Sidebar = ({ activeSection, setActiveSection }) => {
         <a href="tel:+639276111887" className="text-gray-400 hover:text-[#22ff00] transition-colors text-sm block">+63927-611-1887</a>
         <a href="mailto:pbbugacia@gmail.com" className="text-gray-400 hover:text-[#22ff00] transition-colors text-sm block">pbbugacia@gmail.com</a>
         <div className="flex gap-4 pt-4">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
+          <a href="https://github.com/PatrickTechStuff" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
             <GithubIcon size={20} />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
-            <LinkedinIcon size={20} />
+          <a href="https://discord.com/users/710910986181148772" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
+            <DiscordIcon size={20} />
           </a>
         </div>
       </div>
@@ -242,7 +243,7 @@ const MobileNav = ({ activeSection, setActiveSection, isMobileMenuOpen, setIsMob
     { id: 'skills', label: 'MODULES' },
     { id: 'education', label: 'EDUCATION' },
     { id: 'projects', label: 'PROJECTS' },
-    { id: 'contact', label: 'COMMS' }
+    { id: 'contact', label: 'CONTACT' }
   ];
 
   const handleNavClick = (sectionId) => {
@@ -269,7 +270,8 @@ const MobileNav = ({ activeSection, setActiveSection, isMobileMenuOpen, setIsMob
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
-          <h1 className="text-xl font-bold text-white tracking-tight">PB.</h1>
+          {/* <h1 className="text-xl font-bold text-white tracking-tight">PB.3</h1> */}
+          <img src="/faviconbt.png" alt="Logo" style={{ width: '40px', height: 'auto' }} />
           <div className="w-10"></div>
         </div>
       </div>
@@ -290,7 +292,8 @@ const MobileNav = ({ activeSection, setActiveSection, isMobileMenuOpen, setIsMob
         className="md:hidden fixed left-0 top-0 w-56 h-screen bg-linear-to-b from-[#0f0f0f] to-[#0a0a0a] border-r border-white/10 p-8 flex flex-col z-50 pt-20"
       >
         <div className="mb-12">
-          <h1 className="text-3xl font-bold text-white tracking-tight">PB.</h1>
+          {/* <h1 className="text-3xl font-bold text-white tracking-tight">PB.1</h1> */}
+          <img src="/faviconbt.png" alt="Logo" style={{ width: '60px', height: 'auto' }} />
           <p className="text-xs text-gray-500 mt-2 font-medium">FULL STACK DEVELOPER</p>
           <p className="text-xs text-gray-600 mt-1">Manila, Philippines</p>
         </div>
@@ -316,11 +319,11 @@ const MobileNav = ({ activeSection, setActiveSection, isMobileMenuOpen, setIsMob
           <a href="tel:+639276111887" className="text-gray-400 hover:text-[#22ff00] transition-colors text-sm block">+63927-611-1887</a>
           <a href="mailto:pbbugacia@gmail.com" className="text-gray-400 hover:text-[#22ff00] transition-colors text-sm block">pbbugacia@gmail.com</a>
           <div className="flex gap-4 pt-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
+            <a href="https://github.com/PatrickTechStuff" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
               <GithubIcon size={20} />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
-              <LinkedinIcon size={20} />
+            <a href="https://discord.com/users/710910986181148772" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#22ff00] transition-colors">
+              <DiscordIcon size={20} />
             </a>
           </div>
         </div>
@@ -352,7 +355,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
   return (
     <div className="relative py-6 md:py-12">
       {/* Carousel Container */}
-      <div className="relative h-auto md:h-[550px] flex items-center justify-center overflow-visible">
+      <div className="relative h-auto md:h-137.5 flex items-center justify-center overflow-visible">
         {projects.map((project, idx) => {
           const position = getProjectPosition(idx);
           
@@ -440,6 +443,43 @@ const App = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
   const [selectedProject, setSelectedProject] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Scroll detection using Intersection Observer
+  useEffect(() => {
+    const sections = ['dashboard', 'about', 'experience', 'skills', 'education', 'projects', 'contact'];
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px', // Trigger when section is in the middle of viewport
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach(sectionId => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
 
   const skills = [
     { name: 'Laravel/PHP', level: 65 },
