@@ -723,8 +723,8 @@ const App = () => {
             <ContactCard 
               icon={Phone} 
               label="Phone"
-              value="+63927-611-1887"
-              href="tel:+639276111887"
+              value="(+63)961-938-7880"
+              href="tel:+639619387880"
             />
             
           </div>
